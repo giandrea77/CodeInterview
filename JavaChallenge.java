@@ -1,5 +1,13 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
- * https://www.hackerrank.com/domains/java
+ * @author Andrea
+ * @implNote Hacker Rank Java practice implementations
+ * 
+ *           https://www.hackerrank.com/domains/java
  */
 public class JavaChallenge {
 
@@ -56,11 +64,37 @@ public class JavaChallenge {
 
     }
 
+    /**
+     * https://www.hackerrank.com/challenges/tag-content-extractor/problem
+     * 
+     * Code challenge day #2
+     * @param line
+     */
+    public static void tagContentExtractor(String line) {
+    
+        boolean matchFound = false;
+        Pattern r = Pattern.compile("<(.+)>([^<]+)</\\1>");
+        Matcher m = r.matcher(line);
+
+        while (m.find()) {
+            System.out.println(m.group(2));
+            matchFound = true;
+        }
+
+        if ( ! matchFound) {
+            System.out.println("None");
+        }
+
+    }
+
     public static void main(String[] args)  {
         
         // System.out.println(findDay(10, 9, 2019));
         // System.out.println(isPrime("12312873127836127833"));
         System.out.println(usernameValidator("aaaaaaa"));
+
+        // tagContentExtractor("<h1><h1>Sanjay has no watch</h1></h1><par>So wait for a while</par>");
+
     }
 
 }

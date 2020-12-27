@@ -1,15 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
@@ -92,11 +81,10 @@ public class InterviewPreparation {
     }
 
     /*
-     * https://www.hackerrank.com/challenges/2d-array/problem?h_l=interview&
-     * playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=arrays
-     *
+     * [Interview preparation] https://www.hackerrank.com/challenges/2d-array/problem
+     * [Java training] https://www.hackerrank.com/challenges/java-2d-array/problem
      */
-    public static int hourglassSum(int[][] matrix) {
+    public static int hourglassSum(int[][] arr) {
 
         int maxHourglassSum = -10000;
 
@@ -104,10 +92,10 @@ public class InterviewPreparation {
 
             for (int col = 1; col < 5; col++) {
 
-                int hourglassSum = matrix[row - 1][col - 1] + matrix[row - 1][col] + matrix[row - 1][col + 1]
-                        + matrix[row][col] + matrix[row + 1][col - 1] + matrix[row + 1][col] + matrix[row + 1][col + 1];
+                int hourglassSum = arr[row - 1][col - 1] + arr[row - 1][col] + arr[row - 1][col + 1]
+                        + arr[row][col] + arr[row + 1][col - 1] + arr[row + 1][col] + arr[row + 1][col + 1];
 
-                if (hourglassSum > maxHourglassSum) {
+                if ( hourglassSum > maxHourglassSum) {
                     maxHourglassSum = hourglassSum;
                 }
             }

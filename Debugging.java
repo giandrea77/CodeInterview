@@ -52,31 +52,35 @@ public class Debugging {
  *   @*****@*@
  *       #
  * 
+ * Code challenge day #1
+ * 
  */
 public static void printTree(int stars) {
 
     stars = stars % 2 == 0 ? stars++ : stars;
     int steps = 1;
     int whites = stars / 2;
-
+    
     do {
         
         String decorationS = "*".repeat(steps);
         char decoration[] = decorationS.toCharArray();
 
-        for ( int index = 0; index < ( decorationS.length()) ; index++ ) {
+        for ( int index = 0; index < (decorationS.length() / 2); index++ ) {
             int position = (int) (Math.random() * decorationS.length());
             decoration[position] = '@';
         }
 
-        System.out.println(" ".repeat(whites) + new String(decoration));
+        // Code challenge day #3 
+        System.out.println(" ".repeat(whites) + new String(decoration).replace("*", (char) 27 + "[32m" + "*" ).replace("@", (char)27 + "[91m" + "@"));
         
         steps = steps + 2;
         whites--;
 
     } while ( steps <= stars );
 
-    System.out.println(" ".repeat((stars / 2)) + "#");
+    System.out.println(" ".repeat((stars / 2)) + new String((char) 27 + "[33m#"));
+
 }
 
     public static void main(String[] args) {
