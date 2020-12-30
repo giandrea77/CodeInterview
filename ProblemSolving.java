@@ -1,4 +1,4 @@
-import java.util.LinkedHashSet;
+import java.util.Arrays;
 
 /**
  * @author Andrea
@@ -141,7 +141,7 @@ public class ProblemSolving {
 
     private static java.util.LinkedHashSet<String> allSubStrings(String s) {
 
-        LinkedHashSet<String> substrings = new LinkedHashSet<String>();
+        java.util.LinkedHashSet<String> substrings = new java.util.LinkedHashSet<String>();
 
         for ( int index = 0; index < s.length(); index ++ ) {
 
@@ -216,14 +216,210 @@ public class ProblemSolving {
     } 
 
 
+    /**
+     * https://www.hackerrank.com/challenges/arrays-ds/problem
+     * 
+     * @param a
+     * @return
+     */
+    static int[] reverseArray(int[] a) {
+
+        int[] output  = new int[a.length];
+        int outIndex = 0;
+
+        for ( int index = (a.length - 1); index >= 0; index--) {
+            output[outIndex] = a[index];
+            outIndex++;
+        }
+
+        return output ;
+
+    }
+
+
+    /**
+     * https://www.hackerrank.com/challenges/dynamic-array/problem
+     * 
+     * Complete the 'dynamicArray' function below.
+     *
+     * The function is expected to return an INTEGER_ARRAY.
+     * The function accepts following parameters:
+     *  1. INTEGER n
+     *  2. 2D_INTEGER_ARRAY queries
+     *
+     * @param n
+     * @param queries
+     * @return
+     */
+    public static java.util.List<Integer> dynamicArray(int n, java.util.List<java.util.List<Integer>> queries) {
+
+        int lastAnswer = 0;
+        java.util.List<Integer> returns = new java.util.ArrayList<>();
+        java.util.List<java.util.List<Integer>> oList = new java.util.ArrayList<java.util.List<Integer>>();
+
+        for ( int index = 0; index < n; index++ ) {
+            oList.add(new java.util.ArrayList<>());
+        }
+
+        for ( java.util.List<Integer> query : queries ) {
+
+            int index = ( query.get(1) ^ lastAnswer ) % n;
+
+            if ( query.get(0) == 1 ) {    
+                oList.get(index).add(query.get(2));
+            } else {
+                int innerIndex = query.get(2) % oList.get(index).size();
+                lastAnswer  = oList.get(index).get(innerIndex);
+                returns.add(lastAnswer);
+            }
+
+        }
+
+        return returns;
+    }
+
+    public static java.util.List<java.util.List<Integer>> initializeData() {
+
+        java.util.List<java.util.List<Integer>> output = new java.util.ArrayList<>();
+        output.add(java.util.Arrays.asList(new Integer[] {1, 0, 5}));
+        output.add(java.util.Arrays.asList(new Integer[] {1, 1, 7}));
+        output.add(java.util.Arrays.asList(new Integer[] {1, 0, 3}));
+        output.add(java.util.Arrays.asList(new Integer[] {2, 1, 0}));
+        output.add(java.util.Arrays.asList(new Integer[] {2, 1, 1}));
+
+        return output;
+
+    }
+
+    /**
+     * https://www.hackerrank.com/challenges/array-left-rotation/problem
+     * 
+     * Complete the 'rotateLeft' function below.
+     *
+     * The function is expected to return an INTEGER_ARRAY.
+     * The function accepts following parameters:
+     *  1. INTEGER d
+     *  2. INTEGER_ARRAY arr
+     * @param d
+     * @param arr
+     * @return
+     */
+    public static java.util.List<Integer> rotateLeft(int d, java.util.List<Integer> arr) {
+        
+        // Write your code here
+        Integer[] output = new Integer[arr.size()];
+
+        for ( int index = 0; index < arr.size(); index++ ) {
+
+            int newIndex = ( index - d + arr.size() ) % arr.size();
+            output[newIndex] = arr.get(index);
+
+        }
+
+        return Arrays.asList(output);
+    
+    }
+
+    /**
+     * https://www.hackerrank.com/challenges/sparse-arrays/problem
+     * 
+     * @param strings
+     * @param queries
+     * @return
+     */
+    static int[] matchingStrings(String[] strings, String[] queries) {
+
+        java.util.List<Integer> output = new java.util.ArrayList<>();
+
+        java.util.List<String> strings_l = Arrays.asList(strings);
+        java.util.List<String> queries_l = Arrays.asList(queries);
+
+        for ( String query : queries_l ) {
+
+            int counter = 0;
+
+            for ( String string : strings_l ) {
+                if ( query.equals(string)) {
+                    counter++;
+                }
+            }
+            
+            output.add(counter);
+            
+        }
+
+        int[] output_a = output.stream().mapToInt(i -> i).toArray();
+
+        return output_a;
+
+    } 
+
+    /**
+     * https://www.hackerrank.com/challenges/crush/problem
+     * 
+     * @param n
+     * @param queries
+     * @return
+     */
+    static long arrayManipulation(int n, int[][] queries) {
+
+        long[] sums = new long[n + 1];
+        long max_value = 0;
+
+        for ( int index = 0; index < queries.length; index++  ) {
+
+            int a = queries[index][0];
+            int b = queries[index][1];
+            int k = queries[index][2];
+
+            sums[a-1] += k;
+            sums[b] += k * -1;
+
+        }
+        
+        long sum = 0;
+        for ( int index = 0; index < n; index++ ) {
+            
+            sum += sums[index];
+            sums[index] = sum;
+
+            if ( sum > max_value ) {
+                max_value = sum;
+            }
+
+        }
+
+        return max_value;
+
+    }
+
     public static void main(String[] args) {
         
         // gradingStudents(java.util.Arrays.asList(73, 67, 38, 33));
         // System.out.println(superReducedString("aa"));
 
-        printCombination(new int[] {1, 2, 3, 4, 5, 6}, 6, 6); 
+        // printCombination(new int[] {1, 2, 3, 4, 5, 6}, 6, 6); 
+
+        // reverseArray(new int[] {1, 2, 3, 4, 5, 6});
+
+        // *** https://www.hackerrank.com/challenges/dynamic-array/problem *** 
+        // java.util.List<Integer> output = dynamicArray(2, initializeData());
+        // output.forEach(System.out::println);
+
+        // *** https://www.hackerrank.com/challenges/array-left-rotation/problem
+        // java.util.List<Integer> output = rotateLeft(4, Arrays.asList(new Integer[] {1, 2, 3, 4, 5}));
+        // output.forEach(System.out::println);
+
+        // *** https://www.hackerrank.com/challenges/sparse-arrays/problem
+        // int[] output = matchingStrings(new String[] {"aba", "baba", "aba", "xzxb"}, new String[] {"aba", "xzxb", "ab"});
+
+        // *** https://www.hackerrank.com/challenges/crush/problem
+        System.out.println(arrayManipulation(5, new int[][]{{1,2,100}, {2,5,100},{3,4,100}}));
 
     }
+
+
+
 
 }
 
