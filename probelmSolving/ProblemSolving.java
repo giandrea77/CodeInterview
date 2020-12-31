@@ -1,4 +1,4 @@
-import java.util.Arrays;
+package probelmSolving;
 
 /**
  * @author Andrea
@@ -316,7 +316,7 @@ public class ProblemSolving {
 
         }
 
-        return Arrays.asList(output);
+        return java.util.Arrays.asList(output);
     
     }
 
@@ -331,8 +331,8 @@ public class ProblemSolving {
 
         java.util.List<Integer> output = new java.util.ArrayList<>();
 
-        java.util.List<String> strings_l = Arrays.asList(strings);
-        java.util.List<String> queries_l = Arrays.asList(queries);
+        java.util.List<String> strings_l = java.util.Arrays.asList(strings);
+        java.util.List<String> queries_l = java.util.Arrays.asList(queries);
 
         for ( String query : queries_l ) {
 
@@ -393,6 +393,60 @@ public class ProblemSolving {
 
     }
 
+
+    /**
+     * https://www.hackerrank.com/challenges/print-the-elements-of-a-linked-list/problem
+     * 
+     * @param head
+     */
+    static void printLinkedList(SinglyLinkedListNode head) {
+
+        if ( head == null ) {
+            return;
+        }
+
+        System.out.println(head.data);
+        printLinkedList(head.next);
+        
+    }
+
+    static class SinglyLinkedListNode {
+        public int data;
+        public SinglyLinkedListNode next;
+    
+        public SinglyLinkedListNode(int nodeData) {
+            this.data = nodeData;
+            this.next = null;
+        }
+    }
+
+    /**
+     * 
+     * 
+     * @param head
+     * @param data
+     * @return
+     */
+    static SinglyLinkedListNode insertNodeAtTail(SinglyLinkedListNode head, int data) {
+
+        SinglyLinkedListNode singlyLinkedListNode = new SinglyLinkedListNode(data);
+        head.next = singlyLinkedListNode;
+
+        return head;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param llist
+     * @param data
+     * @return
+     */
+    static SinglyLinkedListNode insertNodeAtHead(SinglyLinkedListNode llist, int data) {
+        return null;
+    }
+
     public static void main(String[] args) {
         
         // gradingStudents(java.util.Arrays.asList(73, 67, 38, 33));
@@ -414,12 +468,20 @@ public class ProblemSolving {
         // int[] output = matchingStrings(new String[] {"aba", "baba", "aba", "xzxb"}, new String[] {"aba", "xzxb", "ab"});
 
         // *** https://www.hackerrank.com/challenges/crush/problem
-        System.out.println(arrayManipulation(5, new int[][]{{1,2,100}, {2,5,100},{3,4,100}}));
+        // System.out.println(arrayManipulation(5, new int[][]{{1,2,100}, {2,5,100},{3,4,100}}));
+
+        // *** https://www.hackerrank.com/challenges/print-the-elements-of-a-linked-list/problem
+        // SinglyLinkedListNode singlyLinkedListNode = new SinglyLinkedListNode();
+        // singlyLinkedListNode.data = 13;
+
+        // SinglyLinkedListNode nextSinglyLinkedListNode = new SinglyLinkedListNode();
+        // nextSinglyLinkedListNode.data = 16;
+
+        // singlyLinkedListNode.next = nextSinglyLinkedListNode;
+        // printLinkedList(singlyLinkedListNode);
 
     }
 
-
-
-
 }
+
 
