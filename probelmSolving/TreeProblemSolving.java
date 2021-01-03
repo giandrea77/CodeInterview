@@ -226,6 +226,40 @@ public class TreeProblemSolving {
     }
 
     /**
+     * https://www.hackerrank.com/challenges/binary-search-tree-insertion/problem
+     * 
+     * @param root
+     * @param data
+     * @return
+     */
+    public static Node binarySearchTreeInsert(Node root,int data) {
+
+        if ( root == null ) {
+            Node node = new Node(data);
+            root = node;
+        } else if ( root.data > data ) {
+            root.left = binarySearchTreeInsert(root.left, data);
+        } else if ( root.data < data ) {
+            root.right = binarySearchTreeInsert(root.right, data);
+        }
+
+        return root;
+
+    }
+
+    /**
+     * https://www.hackerrank.com/challenges/tree-huffman-decoding/problem
+     * 
+     * Algorithm: https://www.techiedelight.com/huffman-coding/
+     * 
+     * @param s
+     * @param root
+     */
+    void decode(String s, Node root) {
+        
+    }
+
+    /**
      * Graphs G = (V,E) finite, nonempty set of vertices V and a set of edges E. 
      * Directed graph: if the edges are orderes pairs (v,w). v is tail w is head of the edge. 
      * Number of vertices adjacent to v is called degree of v 
@@ -251,7 +285,7 @@ public class TreeProblemSolving {
         root.right.right.left.right = new Node(4);
         root.right.right.right = new Node(6);
 
-        levelOrder(root);
+        binarySearchTreeInsert(8);
     }
 
     
