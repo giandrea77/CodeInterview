@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 class Node {
+    
     Node left;
     Node right;
     int data;
@@ -248,18 +249,6 @@ public class TreeProblemSolving {
     }
 
     /**
-     * https://www.hackerrank.com/challenges/tree-huffman-decoding/problem
-     * 
-     * Algorithm: https://www.techiedelight.com/huffman-coding/
-     * 
-     * @param s
-     * @param root
-     */
-    void decode(String s, Node root) {
-        
-    }
-
-    /**
      * Graphs G = (V,E) finite, nonempty set of vertices V and a set of edges E. 
      * Directed graph: if the edges are orderes pairs (v,w). v is tail w is head of the edge. 
      * Number of vertices adjacent to v is called degree of v 
@@ -269,11 +258,8 @@ public class TreeProblemSolving {
      *  - there is exactly one root which no edges enter
      *  - every vertex except the root has exactly one entering edge
      *  - there is a path from the root to each vertex 
-     
      * 
-
      * @param args
-     * 
      * 
      */
     public static void main(String[] args) {
@@ -285,7 +271,6 @@ public class TreeProblemSolving {
         root.right.right.left.right = new Node(4);
         root.right.right.right = new Node(6);
 
-        binarySearchTreeInsert(8);
     }
 
     
