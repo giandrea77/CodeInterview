@@ -172,6 +172,8 @@ public class HuffmanDecoding {
         // System.out.println(s);
         decode(s.toString(), tree);
 
+        input.close();
+
     }
 
 }

@@ -208,8 +208,6 @@ public class TreeProblemSolving {
 
         if ( node == null ) return;
 
-        // System.out.println("Node: " + node.data + " level: " + level);
-
         if ( levels.containsKey(level) ) {
             levels.get(level).add(node.data);
         } else {
@@ -245,6 +243,54 @@ public class TreeProblemSolving {
         }
 
         return root;
+
+    }
+
+    // private static void traverse(Node node, int value, List<Integer> path) {
+
+    //     if ( node.data == value) {
+    //         System.out.println("Fount value");
+    //         return;
+    //     } 
+
+    //     if ( node.left != null ) {            
+    //         traverse(node.left, value);
+    //     }
+
+    //     if ( node.right != null ) {
+    //         traverse(node.right, value);
+    //     }
+
+    // }
+
+    /**
+     * https://www.hackerrank.com/challenges/binary-search-tree-lowest-common-ancestor/problem
+     * 
+     * Binary Search Tree : Lowest Common Ancestor
+     * 
+     * @param root
+     * @param v1
+     * @param v2
+     * @return
+     */
+
+    private static Node currentNode;
+
+    public static Node lca(Node node, int v1, int v2) {
+        
+        if ( node.data > v1 && node.data > v2 ) {
+            return null;
+        }
+
+        currentNode = node;
+
+        if ( v1 < currentNode.data && v2 < currentNode.data ) {
+            lca(currentNode.left, v1, v2);
+        } else {
+            lca(currentNode.right, v1, v2);
+        }
+
+        return node;
 
     }
 
